@@ -8,14 +8,11 @@ import Dollar
 
 struct createBoardReducer {
 
-    func create() -> Board {
+    func create(rows: Int, columns: Int, numEmptyTiles: Int) -> Board {
         let deck = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3];
-        let numFilledTiles = 9
-        let numEmptyTiles = 7
-        let numRows = 4
-        let numColumns = 4
+        let numFilledTiles = rows * columns - numEmptyTiles
 
-        var board = Board(rows: numRows, columns: numColumns)
+        var board = Board(rows: rows, columns: columns)
 
         let emptyTiles = $.range(numEmptyTiles)
             .map { _ in Tile() }
@@ -31,4 +28,5 @@ struct createBoardReducer {
         
         return board
     }
+
 }

@@ -10,15 +10,18 @@ import XCTest
 import Dollar
 
 class createBoardReducerTests: XCTestCase {
-    
+    let rows = 4
+    let columns = 4
+    let numEmptyTiles = 7
+
     func testCreatesBoardCorrectly() {
         let reducer = createBoardReducer()
-        let board = reducer.create()
-        let filledTiles = board.grid.filter { $0.number > 0 }
-        let emptyTiles = board.grid.filter { $0.number == 0 }
+        let board = reducer.create(rows, columns: columns, numEmptyTiles: numEmptyTiles)
+        let filledTiles = board.grid.filter { !$0.isEmpty() }
+        let emptyTiles = board.grid.filter { $0.isEmpty() }
 
-        XCTAssertEqual(board.grid.count, 16)
-        XCTAssertEqual(filledTiles.count, 9)
-        XCTAssertEqual(emptyTiles.count, 7)
+        XCTAssertEqual(board.grid.count, rows * columns)
+        XCTAssertEqual(filledTiles.count, rows * columns - numEmptyTiles)
+        XCTAssertEqual(emptyTiles.count, numEmptyTiles)
     }
 }
