@@ -31,5 +31,9 @@ struct Tile {
     mutating func setEmpty() {
         self.number = Special.Empty.rawValue
     }
+
+    mutating func update() {
+        self.number = self.isBlue() || self.isRed() ? 3 : self.number * 2
+    }
 }
 

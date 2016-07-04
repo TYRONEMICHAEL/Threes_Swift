@@ -1,5 +1,5 @@
 //
-//  TileTest.swift
+//  TileTests.swift
 //  Threes
 //
 //  Created by TYRONE AVNIT on 2016/07/02.
@@ -43,5 +43,23 @@ class TileTest: XCTestCase {
         XCTAssertTrue(!tile.isEmpty())
         tile.setEmpty()
         XCTAssertTrue(tile.isEmpty())
+    }
+
+    func testUpdateBlueTile() {
+        var tile = Tile(number: 1)
+        tile.update()
+        XCTAssertEqual(tile.number, 3)
+    }
+
+    func testUpdateRedTile() {
+        var tile = Tile(number: 2)
+        tile.update()
+        XCTAssertEqual(tile.number, 3)
+    }
+
+    func testUpdateNonSpecialTile() {
+        var tile = Tile(number: 3)
+        tile.update()
+        XCTAssertEqual(tile.number, 6)
     }
 }
